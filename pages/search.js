@@ -3,8 +3,9 @@ import { format } from "date-fns";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import InfoCard from "../components/InfoCard";
 
-function search() {
+function search({ searchResults }) {
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
 
@@ -33,6 +34,35 @@ function search() {
             <p className="button">Rooms and beds</p>
             <p className="button">More filters</p>
           </div>
+
+          <div className="flex flex-col">
+            {searchResults.map(
+              ({
+                img,
+                location,
+                title,
+                description,
+                star,
+                price,
+                total,
+                long,
+                lat,
+              }) => (
+                <InfoCard
+                  key={img}
+                  img={img}
+                  location={location}
+                  title={title}
+                  description={description}
+                  star={star}
+                  price={price}
+                  total={total}
+                  long={long}
+                  lat={lat}
+                />
+              )
+            )}
+          </div>
         </section>
       </main>
 
@@ -42,3 +72,15 @@ function search() {
 }
 
 export default search;
+
+export async function getServerSideProps() {
+  const searchResults = await fetch("https://links.papareact.com/isz").then(
+    (response) => response.json()
+  );
+
+  return {
+    props: {
+      searchResults,
+    },
+  };
+}
