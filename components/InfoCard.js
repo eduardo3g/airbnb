@@ -13,8 +13,6 @@ function InfoCard({
   long,
   lat,
 }) {
-  console.log("lat/lon", { lat, long });
-
   return (
     <div
       className="flex py-7 px-2 pr-4 border-b cursor-pointer
