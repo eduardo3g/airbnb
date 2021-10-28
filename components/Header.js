@@ -28,6 +28,7 @@ function Header({ placeholder }) {
     setSearchInput("");
     setStartDate(new Date());
     setEndDate(new Date());
+    setNoOfGuests(1);
   };
 
   const selectionRanges = {
