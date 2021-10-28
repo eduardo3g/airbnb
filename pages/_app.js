@@ -13,7 +13,7 @@ const progress = new ProgressBar({
 
 Router.events.on("routeChangeStart", progress.start); // start loader when user moves to another page
 Router.events.on("routeChangeComplete", progress.finish); // stop loader when the destination page loads
-Router.events.on("routeChangeError", progress.finish); // stop loader if the destination page fails to load
+Router.events.on("routeChangeError", progress.finish); // stop the loader if the destination page fails to load
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
