@@ -44,7 +44,7 @@ function Header({ placeholder }) {
         location: searchInput,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
-        noOfGuests,
+        noOfGuests: noOfGuests <= 0 ? 1 : noOfGuests,
       },
     });
   };
